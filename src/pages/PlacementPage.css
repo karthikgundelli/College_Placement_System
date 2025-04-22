@@ -1,0 +1,119 @@
+.placement-container {
+    padding: 2rem;
+    max-width: 1200px;
+    margin: 0 auto;
+  }
+  
+  .placement-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 2rem;
+    align-items: center;
+  }
+  
+  .placement-image-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .placement-image {
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .placement-content {
+    padding: 1rem;
+  }
+  
+  .placement-title {
+    font-size: 2.5rem;
+    color: #2c3e50;
+    margin-bottom: 1.5rem;
+  }
+  
+  .placement-subtitle {
+    font-size: 1.5rem;
+    color: #3498db;
+    margin: 1.5rem 0 1rem;
+  }
+  
+  .placement-text {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #34495e;
+    margin-bottom: 1.5rem;
+  }
+  
+  .placement-features {
+    margin-left: 1.5rem;
+    margin-bottom: 2rem;
+  }
+  
+  .placement-features li {
+    margin-bottom: 0.8rem;
+    font-size: 1rem;
+    color: #2c3e50;
+  }
+  
+  .placement-stats {
+    display: flex;
+    justify-content: space-between;
+    margin: 2rem 0;
+  }
+  
+  .stat-item {
+    text-align: center;
+    padding: 1rem;
+    background-color: #f8f9fa;
+    border-radius: 8px;
+    flex: 1;
+    margin: 0 0.5rem;
+  }
+  
+  .stat-item h3 {
+    font-size: 2rem;
+    color: #3498db;
+    margin-bottom: 0.5rem;
+  }
+  
+  .stat-item p {
+    font-size: 0.9rem;
+    color: #7f8c8d;
+  }
+  
+  .placement-cta {
+    background-color: #3498db;
+    color: white;
+    border: none;
+    padding: 12px 24px;
+    font-size: 1rem;
+    border-radius: 4px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .placement-cta:hover {
+    background-color: #2980b9;
+  }
+  
+  /* Responsive design for smaller screens */
+  @media (max-width: 768px) {
+    .placement-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .placement-image {
+      max-width: 80%;
+    }
+    
+    .placement-stats {
+      flex-direction: column;
+    }
+    
+    .stat-item {
+      margin: 0.5rem 0;
+    }
+  }

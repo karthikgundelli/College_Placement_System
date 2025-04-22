@@ -1,0 +1,160 @@
+/* General Styles */
+body {
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  
+  /* Aptitude Tests Section */
+  .aptitude-tests {
+    padding: 2rem;
+    text-align: center;
+  }
+  
+  .aptitude-tests h1 {
+    font-size: 2.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .aptitude-tests p {
+    font-size: 1.2rem;
+    color: #555;
+  }
+  
+  /* Company-wise Tests */
+  .company-tests {
+    margin-top: 2rem;
+  }
+  
+  .company-tests h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  .test-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: center;
+  }
+  
+  .test-card {
+    background-color: #f9f9f9;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    padding: 1rem;
+    width: 200px;
+    text-align: center;
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+  }
+  
+  .test-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  .test-card h3 {
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .test-card p {
+    font-size: 1rem;
+    color: #555;
+  }
+  
+  /* Mock Tests */
+  .mock-tests {
+    margin-top: 2rem;
+  }
+  
+  .mock-tests h2 {
+    font-size: 2rem;
+    margin-bottom: 1rem;
+  }
+  
+  /* Footer */
+  footer {
+    background-color: #333;
+    color: white;
+    text-align: center;
+    padding: 1rem;
+    margin-top: 2rem;
+  }
+  
+  footer p {
+    margin: 0.5rem 0;
+  }
+  /* General Styles */
+.aptitude-practice {
+  padding: 2rem;
+  text-align: center;
+}
+
+.aptitude-practice h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.aptitude-practice p {
+  font-size: 1.2rem;
+  color: #555;
+}
+
+/* Questions Section */
+.questions {
+  margin-top: 2rem;
+}
+
+.question-card {
+  background-color: #f9f9f9;
+  border: 1px solid #ddd;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-bottom: 1rem;
+  text-align: left;
+}
+
+.question-card h3 {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.options {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.options label {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+/* Submit Button */
+button {
+  padding: 0.5rem 1rem;
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-top: 1rem;
+}
+
+button:disabled {
+  background-color: #888;
+  cursor: not-allowed;
+}
+
+/* Score Section */
+.score {
+  margin-top: 2rem;
+}
+
+.score h2 {
+  font-size: 2rem;
+  color: #333;
+}

@@ -1,0 +1,81 @@
+.new-add{
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 60px;
+    margin-top: 50px;
+    margin-bottom: 30px;
+
+}
+.img-section{
+    width: 600px;
+    padding: 10px 10px;
+   
+}
+.img-section img{
+    width: 100%;
+    border-radius: 50px;
+}
+.info-section{
+    width: 600px;
+}
+.info-section h1{
+    font-size: 35px;
+
+}
+ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 50px;
+    color: rgb(80, 79, 79);
+}
+.we-done{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 80px;
+    background-color: rgb(198, 227, 235);
+    
+}
+.our-std{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    padding: 10px 10px;
+}
+.our-std h2{
+    font-size: 25px;
+    
+}
+.our-std p{
+    font-size: 18px;
+    line-break: auto;
+    margin: 2px 0;
+}
+.our-cmp{
+    display: flex;
+    flex-direction: column;
+    width: 300px;
+    margin-bottom: 5px;
+    padding: 10px 10px;
+}
+.our-cmp p{
+      margin: 2px 0;
+}
+.our-skills{
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    width: 300px;
+    padding: 10px 10px;
+}
+.our-skills p{
+    margin: 2px 0;
+}
+.our-skills ul{
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px;
+    font-size: 12px;
+}
