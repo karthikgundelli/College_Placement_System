@@ -18,6 +18,7 @@ const AdminDriveTable = () => {
   });
   const [loading, setLoading] = useState(false);
   const [error, setError] = useState(null);
+  const [showForm, setShowForm] = useState(false); // New state to control form visibility
 
   // Load drives from Firestore
   useEffect(() => {
@@ -64,6 +65,7 @@ const AdminDriveTable = () => {
         skillsRequired: '',
         logo: ''
       });
+      setShowForm(false); // Hide form after submission
       setError(null);
     } catch (error) {
       setError(error.message);
@@ -72,7 +74,20 @@ const AdminDriveTable = () => {
     }
   };
 
+  const handleAddDrive = () => {
+    setShowForm(true); // Show form when "Add Drive" button is clicked
+    setEditingId(null);
+    setFormData({
+      companyName: '',
+      driveDate: '',
+      status: 'open',
+      skillsRequired: '',
+      logo: ''
+    });
+  };
+
   const handleEdit = (drive) => {
+    setShowForm(true); // Show form when editing
     setEditingId(drive.id);
     setFormData({
       companyName: drive.companyName,
@@ -89,16 +104,10 @@ const AdminDriveTable = () => {
     setLoading(true);
     try {
       await deleteDoc(doc(db, 'drives', id));
-      // Optimistic update - remove from local state immediately
       setDrives(prev => prev.filter(drive => drive.id !== id));
       setError(null);
     } catch (error) {
       setError(error.message);
-      console.error("Delete error details:", {
-        code: error.code,
-        message: error.message,
-        documentId: id
-      });
     } finally {
       setLoading(false);
     }
@@ -109,9 +118,6 @@ const AdminDriveTable = () => {
     navigate('/admin/login', { replace: true });
   };
 
-  if (loading) return <div className="loading">Loading drives...</div>;
-  if (error) return <div className="error">Error: {error}</div>;
-
   return (
     <div className="drive-management">
       <div className="admin-header">
@@ -120,42 +126,113 @@ const AdminDriveTable = () => {
           Logout
         </button>
       </div>
-      
-      <form onSubmit={handleSubmit} className="drive-form">
-        {/* Form fields remain the same as before */}
-        {/* ... */}
-        
-        <button type="submit" className="submit-btn" disabled={loading}>
-          {loading ? 'Processing...' : editingId ? 'Update Drive' : 'Add Drive'}
+
+      {/* Add Drive Button - Only shown when form is hidden */}
+      {!showForm && (
+        <button onClick={handleAddDrive} className="add-drive-btn">
+          Add New Drive
         </button>
-        {editingId && (
+      )}
+
+      {/* Form Section - Conditionally rendered */}
+      {showForm && (
+        <form onSubmit={handleSubmit} className="drive-form">
+          <div className="form-group">
+            <label>Company Name:</label>
+            <input
+              type="text"
+              name="companyName"
+              value={formData.companyName}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          
+          <div className="form-group">
+            <label>Drive Date:</label>
+            <input
+              type="date"
+              name="driveDate"
+              value={formData.driveDate}
+              onChange={handleInputChange}
+              required
+            />
+          </div>
+          
+          <div className="form-group">
+            <label>Status:</label>
+            <select
+              name="status"
+              value={formData.status}
+              onChange={handleInputChange}
+            >
+              <option value="open">Open</option>
+              <option value="closed">Closed</option>
+              <option value="upcoming">Upcoming</option>
+            </select>
+          </div>
+          
+          <div className="form-group">
+            <label>Skills Required:</label>
+            <input
+              type="text"
+              name="skillsRequired"
+              value={formData.skillsRequired}
+              onChange={handleInputChange}
+            />
+          </div>
+          
+          <div className="form-group">
+            <label>Logo URL:</label>
+            <input
+              type="text"
+              name="logo"
+              value={formData.logo}
+              onChange={handleInputChange}
+            />
+          </div>
+          
+          <button type="submit" className="submit-btn" disabled={loading}>
+            {loading ? 'Processing...' : editingId ? 'Update Drive' : 'Add Drive'}
+          </button>
           <button
             type="button"
             className="cancel-btn"
-            onClick={() => {
-              setEditingId(null);
-              setFormData({
-                companyName: '',
-                driveDate: '',
-                status: 'open',
-                skillsRequired: '',
-                logo: ''
-              });
-            }}
+            onClick={() => setShowForm(false)}
             disabled={loading}
           >
             Cancel
           </button>
-        )}
-      </form>
+        </form>
+      )}
       
       <div className="drive-table-container">
         <table className="drive-table">
-          {/* Table headers remain the same */}
+          <thead>
+            <tr>
+              <th>Company</th>
+              <th>Date</th>
+              <th>Status</th>
+              <th>Skills</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
           <tbody>
             {drives.map((drive) => (
               <tr key={drive.id}>
-                {/* Table cells remain the same */}
+                <td>
+                  {drive.logo && (
+                    <img src={drive.logo} alt={drive.companyName} className="company-logo" />
+                  )}
+                  {drive.companyName}
+                </td>
+                <td>{new Date(drive.driveDate).toLocaleDateString()}</td>
+                <td>
+                  <span className={`status-badge ${drive.status}`}>
+                    {drive.status}
+                  </span>
+                </td>
+                <td>{drive.skillsRequired}</td>
                 <td>
                   <button
                     onClick={() => handleEdit(drive)}
