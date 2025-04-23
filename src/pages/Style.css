@@ -657,3 +657,134 @@ footer p {
       border-bottom: 1px solid rgba(255, 255, 255, 0.1);
     }
   }
+
+/* Responsive Styles */
+.app-container {
+  position: relative;
+}
+
+.main-nav {
+  background: #333;
+  padding: 1rem;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+}
+
+.main-nav ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.main-nav li {
+  margin-right: 1.5rem;
+}
+
+.main-nav a {
+  color: white;
+  text-decoration: none;
+  font-size: 1.1rem;
+}
+
+.mobile-nav-toggle {
+  display: none;
+  position: fixed;
+  top: 1rem;
+  right: 1rem;
+  z-index: 1000;
+  background: #333;
+  color: white;
+  border: none;
+  padding: 0.5rem;
+  font-size: 1.5rem;
+  cursor: pointer;
+  border-radius: 4px;
+}
+
+/* Mobile Navigation */
+@media (max-width: 768px) {
+  .mobile-nav-toggle {
+    display: block;
+  }
+
+  .main-nav {
+    position: fixed;
+    top: 0;
+    left: -100%;
+    width: 70%;
+    height: 100vh;
+    transition: left 0.3s ease;
+  }
+
+  .main-nav.nav-open {
+    left: 0;
+  }
+
+  .main-nav ul {
+    flex-direction: column;
+    padding-top: 3rem;
+  }
+
+  .main-nav li {
+    margin: 1rem 0;
+  }
+
+  /* Increase font sizes for mobile */
+  h1 {
+    font-size: 2rem !important;
+  }
+  
+  h2 {
+    font-size: 1.8rem !important;
+  }
+  
+  h3 {
+    font-size: 1.5rem !important;
+  }
+  
+  p {
+    font-size: 1.1rem !important;
+  }
+
+  /* Adjust other elements for mobile */
+  .placement-info .title {
+    padding: 1rem;
+  }
+
+  .company-partners .partner-logos {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .partner-logos img {
+    margin-bottom: 1rem;
+    max-width: 80%;
+  }
+
+  .testimonials .row {
+    flex-direction: column;
+  }
+
+  .testimonials .col {
+    margin-bottom: 2rem;
+  }
+}
+
+/* General font size increase */
+h1 {
+  font-size: 2.5rem;
+}
+
+h2 {
+  font-size: 2rem;
+}
+
+h3 {
+  font-size: 1.5rem;
+}
+
+p, a, button {
+  font-size: 1.2rem;
+}
